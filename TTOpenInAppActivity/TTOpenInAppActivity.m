@@ -78,12 +78,14 @@
 
 - (UIImage *)activityImage
 {
-    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
-        return [UIImage imageNamed:@"TTOpenInAppActivity8"];
-    } else if([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
-        return [UIImage imageNamed:@"TTOpenInAppActivity7"];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+        return [UIImage imageNamed:@"TTOpenInAppActivity8" inBundle:bundle compatibleWithTraitCollection:nil];
+    } else if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+        return [UIImage imageNamed:@"TTOpenInAppActivity7" inBundle:bundle compatibleWithTraitCollection:nil];
     } else {
-        return [UIImage imageNamed:@"TTOpenInAppActivity"];
+        return [UIImage imageNamed:@"TTOpenInAppActivity" inBundle:bundle compatibleWithTraitCollection:nil];
     }
 }
 
